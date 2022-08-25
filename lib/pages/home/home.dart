@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/home/components/carousel.dart';
+import 'package:portfolio/pages/home/components/cv_section.dart';
 import 'package:portfolio/pages/home/components/header.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/globals.dart';
@@ -73,7 +74,7 @@ class Home extends StatelessWidget {
               SizedBox(
                 height: 20.0,
               ),
-              
+              CvSection(),
             ],
           ),
         ),
