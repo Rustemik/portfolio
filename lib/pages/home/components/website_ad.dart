@@ -1,14 +1,12 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/screen_helper.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-class IosAppAd extends StatelessWidget {
-  const IosAppAd({Key? key}) : super(key: key);
+class WebsiteAd extends StatelessWidget {
+  // Мы можем использовать ту же идею, что и ios_app_ad.dart, и поменять порядок дочерних элементов, давайте скопируем код - We can use same idea as ios_app_ad.dart and swap children order, let's copy code
+  const WebsiteAd({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,19 +36,12 @@ class IosAppAd extends StatelessWidget {
                   // Отключите расширение на меньшем экране, чтобы избежать ошибок рендеринга, установив для flex значение 0 - Disable expanded on smaller screen to avoid Render errors by setting flex to 0
                   Expanded(
                     flex: constraints.maxWidth > 720.0 ? 1 : 0,
-                    child: Image.asset("assets/ios.png",
-                    // Установить ширину изображения на меньшем экране - Set width for image on smaller screen
-                    width: constraints.maxWidth > 720.0 ? null : 350.0,
-                    ),
-                  ),
-                  Expanded(
-                    flex: constraints.maxWidth > 720.0 ? 1 : 0,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "IOS APP",
+                          "WEBSITE",
                           style: GoogleFonts.oswald(
                             color: kPrimaryColor,
                             fontWeight: FontWeight.w900,
@@ -61,7 +52,7 @@ class IosAppAd extends StatelessWidget {
                           height: 15.0,
                         ),
                         Text(
-                          "UNIVERSAL\nSMART HOME APP",
+                          "EVOLVING NAGA\nRESORT WEBSITE",
                           style: GoogleFonts.oswald(
                             color: Colors.white,
                             fontWeight: FontWeight.w900,
@@ -142,7 +133,21 @@ class IosAppAd extends StatelessWidget {
                             ),
                           ],
                         ),
+                        SizedBox(
+                          height: 70.0,
+                        ),
                       ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 25.0,
+                  ),
+                  Expanded(
+                    flex: constraints.maxWidth > 720.0 ? 1 : 0,
+                    child: Image.asset(
+                      "assets/laptop.png",
+                      // Установить ширину изображения на меньшем экране - Set width for image on smaller screen
+                      width: constraints.maxWidth > 720.0 ? null : 350.0,
                     ),
                   ),
                 ],

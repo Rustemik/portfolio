@@ -3,6 +3,7 @@ import 'package:portfolio/pages/home/components/carousel.dart';
 import 'package:portfolio/pages/home/components/cv_section.dart';
 import 'package:portfolio/pages/home/components/header.dart';
 import 'package:portfolio/pages/home/components/ios_app_ad.dart';
+import 'package:portfolio/pages/home/components/website_ad.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/globals.dart';
 
@@ -77,6 +78,10 @@ class Home extends StatelessWidget {
               ),
               CvSection(),
               IosAppAd(),
+              SizedBox(
+                height: 70.0,
+              ),
+              WebsiteAd(),
             ],
           ),
         ),
