@@ -3,6 +3,7 @@ import 'package:portfolio/pages/home/components/carousel.dart';
 import 'package:portfolio/pages/home/components/cv_section.dart';
 import 'package:portfolio/pages/home/components/header.dart';
 import 'package:portfolio/pages/home/components/ios_app_ad.dart';
+import 'package:portfolio/pages/home/components/portfolio_stats.dart';
 import 'package:portfolio/pages/home/components/website_ad.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/globals.dart';
@@ -82,6 +83,10 @@ class Home extends StatelessWidget {
                 height: 70.0,
               ),
               WebsiteAd(),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 28.0),
+                child: PortfolioStats(),
+              ),
             ],
           ),
         ),
