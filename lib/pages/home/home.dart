@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/home/components/carousel.dart';
 import 'package:portfolio/pages/home/components/cv_section.dart';
+import 'package:portfolio/pages/home/components/education_section.dart';
 import 'package:portfolio/pages/home/components/header.dart';
 import 'package:portfolio/pages/home/components/ios_app_ad.dart';
 import 'package:portfolio/pages/home/components/portfolio_stats.dart';
@@ -87,6 +88,10 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 28.0),
                 child: PortfolioStats(),
               ),
+              SizedBox(
+                height: 50.0,
+              ),
+              EducationSection(),
             ],
           ),
         ),
