@@ -6,6 +6,8 @@ import 'package:portfolio/pages/home/components/header.dart';
 import 'package:portfolio/pages/home/components/ios_app_ad.dart';
 import 'package:portfolio/pages/home/components/portfolio_stats.dart';
 import 'package:portfolio/pages/home/components/skill_section.dart';
+import 'package:portfolio/pages/home/components/sponsors.dart';
+import 'package:portfolio/pages/home/components/testimonial_widget.dart';
 import 'package:portfolio/pages/home/components/website_ad.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/globals.dart';
@@ -93,8 +95,18 @@ class Home extends StatelessWidget {
                 height: 50.0,
               ),
               EducationSection(),
-              SizedBox(height: 50.0),
+              SizedBox(
+                height: 50.0,
+              ),
               SkillSection(),
+              SizedBox(
+                height: 50.0,
+              ),
+              Sponsors(),
+              SizedBox(
+                height: 50.0,
+              ),
+              TestimonialWidget(),
             ],
           ),
         ),
