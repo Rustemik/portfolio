@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/pages/home/components/carousel.dart';
 import 'package:portfolio/pages/home/components/cv_section.dart';
 import 'package:portfolio/pages/home/components/education_section.dart';
+import 'package:portfolio/pages/home/components/footer.dart';
 import 'package:portfolio/pages/home/components/header.dart';
 import 'package:portfolio/pages/home/components/ios_app_ad.dart';
 import 'package:portfolio/pages/home/components/portfolio_stats.dart';
@@ -107,6 +108,7 @@ class Home extends StatelessWidget {
                 height: 50.0,
               ),
               TestimonialWidget(),
+              Footer(),
             ],
           ),
         ),

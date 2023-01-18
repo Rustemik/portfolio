@@ -33,9 +33,9 @@ class TestimonialWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ScreenHelper(
-        desktop: _buildUi(1000.0),
-        tablet: _buildUi(800.0),
-        mobile: _buildUi(MediaQuery.of(context).size.width * .8),
+        desktop: _buildUi(kDesktopMaxWidth),
+        tablet: _buildUi(kTabletMaxWidth),
+        mobile: _buildUi(getMobileMaxWidth(context)),
       ),
     );
   }

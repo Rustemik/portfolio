@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/screen_helper.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
@@ -20,9 +21,9 @@ class Sponsors extends StatelessWidget {
         vertical: 50.0,
       ),
       child: ScreenHelper(
-        desktop: _buildUi(1000.0),
-        tablet: _buildUi(800.0),
-        mobile: _buildUi(MediaQuery.of(context).size.width * .8),
+        desktop: _buildUi(kDesktopMaxWidth),
+        tablet: _buildUi(kTabletMaxWidth),
+        mobile: _buildUi(getMobileMaxWidth(context)),
       ),
     );
   }

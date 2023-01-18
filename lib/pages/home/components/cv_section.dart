@@ -41,9 +41,9 @@ class CvSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: ScreenHelper(
-        mobile: _buildUi(context, MediaQuery.of(context).size.width * 0.8),
-        tablet: _buildUi(context, 760.0),
-        desktop: _buildUi(context, 1000.0),
+        mobile: _buildUi(context, getMobileMaxWidth(context)),
+        tablet: _buildUi(context, kTabletMaxWidth),
+        desktop: _buildUi(context, kDesktopMaxWidth),
       ),
     );
   }

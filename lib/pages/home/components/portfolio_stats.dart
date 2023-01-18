@@ -20,9 +20,9 @@ class PortfolioStats extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: ScreenHelper(
-        mobile: _buildUi(MediaQuery.of(context).size.width * .8, context),
-        tablet: _buildUi(760.0, context),
-        desktop: _buildUi(1000.0, context),
+        mobile: _buildUi(getMobileMaxWidth(context), context),
+        tablet: _buildUi(kTabletMaxWidth, context),
+        desktop: _buildUi(kDesktopMaxWidth, context),
       ),
     );
   }
