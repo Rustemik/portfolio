@@ -60,10 +60,10 @@ class HeaderRow extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Color(0xFFF4EBD9), // цвет обводки
+                              color: kTitleTextDarkColor, // цвет обводки
                               width: 2, // толщина обводки
                             ),
-                            color: const Color(0xFF5B4636),
+                            color: kSecondaryColor,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: TextButton(
@@ -77,7 +77,7 @@ class HeaderRow extends StatelessWidget {
                             child: Text(
                               item.title,
                               style: GoogleFonts.orbitron(
-                                color: Color(0xFFF4EBD9),
+                                color: kTitleTextDarkColor,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -95,7 +95,7 @@ class HeaderRow extends StatelessWidget {
                           child: Text(
                             item.title,
                             style: GoogleFonts.orbitron(
-                              color: Colors.white,
+                              color: kTitleTextDarkColor,
                               fontSize: 13,
                               fontWeight: FontWeight.bold,
                             ),
@@ -127,7 +127,7 @@ class HeaderLogo extends StatelessWidget {
                     TextSpan(
                       text: "hRust",
                       style: GoogleFonts.orbitron(
-                        color: Color(0xFFF4EBD9),
+                        color: kTitleTextDarkColor,
                         fontSize: 28.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -199,8 +199,8 @@ class _DarkLightSwitchState extends State<DarkLightSwitch>
             decoration: BoxDecoration(
               border: Border.all(
                 color: darkTheme.value
-                    ? Color(0xFFF4EBD9)
-                    : kBackgroundDarkColor22,
+                    ? kTitleTextDarkColor
+                    : kBackgroundDarkColor,
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(20),

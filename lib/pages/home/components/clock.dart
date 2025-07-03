@@ -3,25 +3,16 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/utils/constants.dart';
 
-void main() => runApp(
-  const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Scaffold(
-      backgroundColor: Color(0xFFF4EBD9),
-      body: SafeArea(child: Center(child: DaVinciClockSwitcher())),
-    ),
-  ),
-);
-
-class DaVinciClockSwitcher extends StatefulWidget {
-  const DaVinciClockSwitcher({super.key});
+class ClockSwitcher extends StatefulWidget {
+  const ClockSwitcher({super.key});
 
   @override
-  State<DaVinciClockSwitcher> createState() => _DaVinciClockSwitcherState();
+  State<ClockSwitcher> createState() => _ClockSwitcherState();
 }
 
-class _DaVinciClockSwitcherState extends State<DaVinciClockSwitcher> {
+class _ClockSwitcherState extends State<ClockSwitcher> {
   bool _showAnalog = true;
 
   @override
@@ -35,14 +26,14 @@ class _DaVinciClockSwitcherState extends State<DaVinciClockSwitcher> {
           width: size,
           height: size,
           child: _showAnalog
-              ? DaVinciAnalogClock(size: size)
-              : DaVinciDigitalClock(size: size),
+              ? AnalogClock(size: size)
+              : DigitalClock(size: size),
         ),
         const SizedBox(height: 16),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF5B4636),
-            foregroundColor: const Color(0xFFF4EBD9),
+            backgroundColor: kSecondaryColor,
+            foregroundColor: kTitleTextDarkColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -59,12 +50,12 @@ class _DaVinciClockSwitcherState extends State<DaVinciClockSwitcher> {
                 ? GoogleFonts.orbitron(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xFFF4EBD9),
+                    color: kTitleTextDarkColor,
                   )
                 : GoogleFonts.shareTechMono(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
-                    color: const Color(0xFFF4EBD9),
+                    color: kTitleTextDarkColor,
                   ),
           ),
         ),
@@ -73,16 +64,16 @@ class _DaVinciClockSwitcherState extends State<DaVinciClockSwitcher> {
   }
 }
 
-class DaVinciAnalogClock extends StatefulWidget {
+class AnalogClock extends StatefulWidget {
   final double size;
 
-  const DaVinciAnalogClock({super.key, required this.size});
+  const AnalogClock({super.key, required this.size});
 
   @override
-  State<DaVinciAnalogClock> createState() => _DaVinciAnalogClockState();
+  State<AnalogClock> createState() => _DaVinciAnalogClockState();
 }
 
-class _DaVinciAnalogClockState extends State<DaVinciAnalogClock> {
+class _DaVinciAnalogClockState extends State<AnalogClock> {
   late Timer _timer;
   DateTime _dateTime = DateTime.now();
 
@@ -111,7 +102,7 @@ class _DaVinciAnalogClockState extends State<DaVinciAnalogClock> {
       children: [
         CustomPaint(
           size: Size(widget.size, widget.size),
-          painter: _DaVinciClockPainter(_dateTime),
+          painter: _ClockPainter(_dateTime),
         ),
         Positioned(
           left: logoOffset.dx - widget.size * 0.07,
@@ -120,7 +111,7 @@ class _DaVinciAnalogClockState extends State<DaVinciAnalogClock> {
           height: widget.size * 0.14,
           child: Icon(
             Icons.flutter_dash,
-            color: const Color(0xFF5B4636),
+            color: kSecondaryColor,
             size: widget.size * 0.14,
           ),
         ),
@@ -129,13 +120,13 @@ class _DaVinciAnalogClockState extends State<DaVinciAnalogClock> {
   }
 }
 
-class _DaVinciClockPainter extends CustomPainter {
+class _ClockPainter extends CustomPainter {
   final DateTime dateTime;
 
-  _DaVinciClockPainter(this.dateTime);
+  _ClockPainter(this.dateTime);
 
-  final Color paperColor = const Color(0xFFF4EBD9);
-  final Color lineColor = const Color(0xFF5B4636);
+  final Color paperColor = kTitleTextDarkColor;
+  final Color lineColor = kSecondaryColor;
   final Color shadowColor = const Color(0xFF3A2F24);
 
   final double strokeWidth = 3.0;
@@ -219,7 +210,6 @@ class _DaVinciClockPainter extends CustomPainter {
     final numberTextStyle = GoogleFonts.shareTechMono(
       color: lineColor,
       fontSize: radius * 0.12,
-      //fontFamily: 'PatrickHand',
       fontWeight: FontWeight.w400,
       shadows: [
         Shadow(
@@ -301,7 +291,7 @@ class _DaVinciClockPainter extends CustomPainter {
       canvas.drawCircle(center, r, decoPaint);
     }
 
-    // Верхний текст "Analog watch" по дуге
+    // Верхний текст по дуге
     const String topText = 'Analog watch';
     final double topTextRadius = radius * 1.15;
     final int topCharCount = topText.length;
@@ -353,7 +343,7 @@ class _DaVinciClockPainter extends CustomPainter {
       canvas.restore();
     }
 
-    // Нижний текст "this watch app is written in flutter" по дуге
+    // Нижний текст по дуге
     const String bottomText = 'this watch app is written in flutter';
     final double bottomTextRadius = radius * 1.1;
     final int bottomCharCount = bottomText.length;
@@ -434,19 +424,19 @@ class _DaVinciClockPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _DaVinciClockPainter oldDelegate) => true;
+  bool shouldRepaint(covariant _ClockPainter oldDelegate) => true;
 }
 
-class DaVinciDigitalClock extends StatefulWidget {
+class DigitalClock extends StatefulWidget {
   final double size;
 
-  const DaVinciDigitalClock({super.key, required this.size});
+  const DigitalClock({super.key, required this.size});
 
   @override
-  State<DaVinciDigitalClock> createState() => _DaVinciDigitalClockState();
+  State<DigitalClock> createState() => _DaVinciDigitalClockState();
 }
 
-class _DaVinciDigitalClockState extends State<DaVinciDigitalClock> {
+class _DaVinciDigitalClockState extends State<DigitalClock> {
   late Timer _timer;
   DateTime _dateTime = DateTime.now();
 
@@ -504,9 +494,9 @@ class _DaVinciDigitalClockState extends State<DaVinciDigitalClock> {
 
   @override
   Widget build(BuildContext context) {
-    final lineColor = const Color(0xFF5B4636);
+    final lineColor = kSecondaryColor;
     final shadowColor = const Color(0xFF3A2F24);
-    final paperColor = const Color(0xFFF4EBD9);
+    final paperColor = kTitleTextDarkColor;
 
     final timeText =
         '${_dateTime.hour.toString().padLeft(2, '0')}:'

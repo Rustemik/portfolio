@@ -5,7 +5,7 @@ import 'package:portfolio/pages/home/components/carousel.dart';
 import 'package:portfolio/pages/home/components/footer.dart';
 import 'package:portfolio/pages/home/components/header.dart';
 import 'package:portfolio/pages/home/components/projects_ad.dart';
-import 'package:portfolio/pages/home/components/resume_page.dart';
+import 'package:portfolio/pages/home/components/summary_page.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/globals.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -161,7 +161,7 @@ class _HomeState extends State<Home> {
                 key: _summaryKey,
                 child: _buildSectionTitle('SUMMARY:'),
               ),
-              ResumePageVintage(),
+              SummaryPage(),
               SizedBox(height: 30),
               Container(key: _contactsKey, child: Footer()),
               //Stats(),
@@ -188,14 +188,14 @@ class _HomeState extends State<Home> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Color(0xFFF4EBD9), // цвет обводки
+                      color: kTitleTextDarkColor, // цвет обводки
                       width: 2, // толщина обводки
                     ),
                   ),
                   child: FloatingActionButton(
                     onPressed: scrollToTop,
-                    backgroundColor: Color(0xFF5B4636),
-                    foregroundColor: Color(0xFFF4EBD9),
+                    backgroundColor: kSecondaryColor,
+                    foregroundColor: kTitleTextDarkColor,
                     shape: CircleBorder(),
                     child: Icon(Icons.arrow_upward, size: 30),
                   ),
@@ -222,7 +222,7 @@ Widget _buildSectionTitle(String title) {
   return Text(
     title,
     style: GoogleFonts.orbitron(
-      color: Color(0xFFF4EBD9),
+      color: kTitleTextDarkColor,
       fontWeight: FontWeight.w700,
       fontSize: 24,
     ),

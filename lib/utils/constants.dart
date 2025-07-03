@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 const Color kPrimaryColor = Color(0xFF4E76E6);
 const Color kPrimaryColor3 = Color(0xFF2A4480);
 const Color kBackgroundColor = Color.fromRGBO(7, 17, 26, 1);
-const Color kDangerColor = const Color(0xFF0AAFF1);
-const Color kDangerColor22 = Color.fromARGB(255, 170, 170, 170); //мой фон
+const Color kDangerColor = Color.fromARGB(255, 170, 170, 170); //мой фон
 const Color kCaptionColor = Color.fromRGBO(166, 177, 187, 1);
 
 const Color kPrimaryColor2 = const Color(0xff132226);
@@ -14,12 +13,13 @@ const Color kBackgroundColor22 = const Color(0xFF72A2C0);
 const Color kDangerColor2 = const Color(0xff132226);
 const Color kCaptionColor2 = const Color(0xff24A07E);
 
+const kSecondaryColor = Color(0xFF5B4636);
 const kSecondaryLightColor = Color(0xFFE4E9F2);
 const kSecondaryDarkColor = Color(0xFF404040);
 const kAccentLightColor = Color(0xFFB3BFD7);
 const kAccentDarkColor = Color(0xFF4E4E4E);
-const kBackgroundDarkColor22 = Color.fromARGB(255, 20, 20, 20); //мой фон
-const kBackgroundDarkColor = Color(0xFF091921);
+
+const kBackgroundDarkColor = Color.fromARGB(255, 20, 20, 20); //мой фон
 const kBackgroundDarkColor2 = Color(0xFF3A3A3A);
 const kSurfaceDarkColor = Color(0xFF222225);
 // Icon Colors
@@ -31,7 +31,7 @@ const kPrimaryIconDarkColor = Color(0xFF232323);
 const kBodyTextColorLight = Color(0xFFA1B0CA);
 const kBodyTextColorDark = Color(0xFF7C7C7C);
 const kTitleTextLightColor = Color(0xFF101112);
-const kTitleTextDarkColor = Colors.white;
+const kTitleTextDarkColor = Color(0xFFF4EBD9); //Colors.red;
 
 const kShadowColor = Color(0xFF364564);
 

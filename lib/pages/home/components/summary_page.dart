@@ -3,12 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ResumePageVintage extends StatelessWidget {
-  const ResumePageVintage({Key? key}) : super(key: key);
+class SummaryPage extends StatelessWidget {
+  const SummaryPage({Key? key}) : super(key: key);
 
-  static const backgroundColor = Color(0xFFF4EBD9);
-  static const primaryColor = Color(0xFF5B4636);
-  static const textColor = kBackgroundDarkColor22;
+  static const backgroundColor = kTitleTextDarkColor;
+  static const primaryColor = kSecondaryColor;
+  static const textColor = kBackgroundDarkColor;
 
   @override
   Widget build(BuildContext context) {

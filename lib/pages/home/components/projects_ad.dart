@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/pages/home/components/resume_page.dart';
+import 'package:portfolio/pages/home/components/summary_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui' as ui;
 
@@ -314,14 +314,12 @@ class _ProjectsAdState extends State<ProjectsAd> {
           height: size,
           width: size,
           decoration: BoxDecoration(
-            color: enabled
-                ? ResumePageVintage.primaryColor
-                : Colors.grey.shade400,
+            color: enabled ? SummaryPage.primaryColor : Colors.grey.shade400,
             shape: BoxShape.circle,
             boxShadow: enabled
                 ? [
                     BoxShadow(
-                      color: ResumePageVintage.primaryColor.withOpacity(0.6),
+                      color: SummaryPage.primaryColor.withOpacity(0.6),
                       blurRadius: 8,
                       offset: const Offset(0, 3),
                     ),
@@ -332,9 +330,7 @@ class _ProjectsAdState extends State<ProjectsAd> {
           child: Center(
             child: IconTheme(
               data: IconThemeData(
-                color: enabled
-                    ? ResumePageVintage.backgroundColor
-                    : Colors.white54,
+                color: enabled ? SummaryPage.backgroundColor : Colors.white54,
                 size: size * 0.6,
               ),
               child: icon,
@@ -348,9 +344,9 @@ class _ProjectsAdState extends State<ProjectsAd> {
   @override
   Widget build(BuildContext context) {
     final currentProject = projects[_currentProjectIndex];
-    final bgColor = ResumePageVintage.backgroundColor;
-    final textColor = ResumePageVintage.textColor;
-    final primaryColor = ResumePageVintage.primaryColor;
+    final bgColor = SummaryPage.backgroundColor;
+    final textColor = SummaryPage.textColor;
+    final primaryColor = SummaryPage.primaryColor;
 
     return Center(
       child: Padding(
@@ -402,7 +398,7 @@ class _ProjectsAdState extends State<ProjectsAd> {
                                   //   ),
                                   //   decoration: BoxDecoration(
                                   //     border: Border.all(
-                                  //       color: Color(0xFF5B4636),
+                                  //       color: kSecondaryColor,
                                   //       width: 4,
                                   //     ),
                                   //     borderRadius: BorderRadius.circular(20),

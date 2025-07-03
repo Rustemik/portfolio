@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/models/carousel_item_model.dart';
 import 'package:portfolio/pages/home/components/clock.dart';
-import 'package:portfolio/pages/home/components/super_clock.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -25,7 +24,7 @@ List<CarouselItemModel> getCarouselItems(ThemeData theme) => [
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 1
-                    ..color = Color(0xFFF4EBD9), // цвет обводки
+                    ..color = kTitleTextDarkColor, // цвет обводки
                 ),
               ),
               // Заливка
@@ -43,7 +42,7 @@ List<CarouselItemModel> getCarouselItems(ThemeData theme) => [
           Text(
             "Hi, my name is\nRustem", //RUSTEM\nSHAYAKBIROV
             style: GoogleFonts.orbitron(
-              color: Color(0xFFF4EBD9),
+              color: kTitleTextDarkColor,
               fontSize: 50,
               fontWeight: FontWeight.w900,
               height: 1,
@@ -113,7 +112,7 @@ List<CarouselItemModel> getCarouselItems(ThemeData theme) => [
     ),
     image: Container(
       child:
-          DaVinciClockSwitcher(), //Image.asset("assets/person2.png", fit: BoxFit.contain),
+          ClockSwitcher(), //Image.asset("assets/person.png", fit: BoxFit.contain),
     ),
   ),
 ];

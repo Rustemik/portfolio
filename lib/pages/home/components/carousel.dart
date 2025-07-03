@@ -8,12 +8,13 @@ class Carousel extends StatelessWidget {
   final CarouselController carouselController;
 
   Carousel({Key? key})
-      : carouselController = CarouselController(),
-        super(key: key);
+    : carouselController = CarouselController(),
+      super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var carouselContainerHeight = MediaQuery.of(context).size.height *
+    var carouselContainerHeight =
+        MediaQuery.of(context).size.height *
         (ScreenHelper.isMobile(context) ? .4 : .75);
     var carouselItems = getCarouselItems(Theme.of(context));
 
@@ -31,8 +32,9 @@ class Carousel extends StatelessWidget {
                 carouselItems.length,
                 (index) => Builder(
                   builder: (context) => Container(
-                    constraints:
-                        BoxConstraints(minHeight: carouselContainerHeight),
+                    constraints: BoxConstraints(
+                      minHeight: carouselContainerHeight,
+                    ),
                     child: ScreenHelper(
                       desktop: _buildDesktop(
                         context,
@@ -59,7 +61,7 @@ class Carousel extends StatelessWidget {
                 height: carouselContainerHeight,
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -72,7 +74,10 @@ class Carousel extends StatelessWidget {
         minWidth: 1000,
         defaultScale: false,
         child: Row(
-          children: [Expanded(child: text), Expanded(child: image)],
+          children: [
+            Expanded(child: text),
+            Expanded(child: image),
+          ],
         ),
       ),
     );
@@ -85,7 +90,10 @@ class Carousel extends StatelessWidget {
         minWidth: 760,
         defaultScale: false,
         child: Row(
-          children: [Expanded(child: text), Expanded(child: image)],
+          children: [
+            Expanded(child: text),
+            Expanded(child: image),
+          ],
         ),
       ),
     );
@@ -93,8 +101,9 @@ class Carousel extends StatelessWidget {
 
   Widget _buildMobile(BuildContext context, Widget text, Widget image) {
     return Container(
-      constraints:
-          BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .8),
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width * .8,
+      ),
       width: double.infinity,
       child: text,
     );

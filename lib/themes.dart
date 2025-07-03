@@ -46,7 +46,7 @@ class AppTheme {
 
     return base.copyWith(
       primaryColor: kPrimaryColor,
-      scaffoldBackgroundColor: kBackgroundDarkColor22,
+      scaffoldBackgroundColor: kBackgroundDarkColor,
       colorScheme: ColorScheme.dark(
         // Изменено на dark()
         primary: kPrimaryColor,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/gradient_icon.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -22,7 +23,7 @@ class Footer extends StatelessWidget {
                 child: Text(
                   "That's all folks!\n",
                   style: GoogleFonts.jetBrainsMono(
-                    color: Color(0xFFF4EBD9),
+                    color: kTitleTextDarkColor,
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                   ),
@@ -143,7 +144,7 @@ class Footer extends StatelessWidget {
                       "portfolio made on flutter\n",
                       style: GoogleFonts.jetBrainsMono(
                         height: 1.5,
-                        color: Color(0xFFF4EBD9),
+                        color: kTitleTextDarkColor,
                         fontSize: 18,
                       ),
                     ),
