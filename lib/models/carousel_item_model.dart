@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class CarouselItemModel {
+class CarouselItemModel{
   final Widget text;
   final Widget image;
-  
-  CarouselItemModel({
-    required this.text,
-    required this.image,
-  });
+
+  CarouselItemModel({required this.text, required this.image});
 }

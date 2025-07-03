@@ -1,36 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/models/footer_item.dart';
-import 'package:portfolio/utils/constants.dart';
-import 'package:portfolio/utils/screen_helper.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
-final List<FooterItem> footerItems = [
-  FooterItem(
-    iconPath: "assets/mappin.png",
-    title: "ADDRESS",
-    text1: "999 Carter Street",
-    text2: "Sailor Springs, IL 64234",
-  ),
-  FooterItem(
-    iconPath: "assets/phone.png",
-    title: "PHONE",
-    text1: "+1 618-689-9604",
-    text2: "+1 781-689-9632",
-  ),
-  FooterItem(
-    iconPath: "assets/email.png",
-    title: "EMAIL",
-    text1: "hello@example.com",
-    text2: "info@flutterpanda.com",
-  ),
-  FooterItem(
-    iconPath: "assets/whatsapp.png",
-    title: "WHATSAPP",
-    text1: "+234 0901-134-0095",
-    text2: "",
-  ),
-];
+import 'package:portfolio/utils/gradient_icon.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -38,158 +10,150 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ScreenHelper(
-        desktop: _buildUi(kDesktopMaxWidth, context),
-        tablet: _buildUi(kTabletMaxWidth, context),
-        mobile: _buildUi(getMobileMaxWidth(context), context),
-      ),
-    );
-  }
-}
-
-Widget _buildUi(double width, BuildContext context) {
-  return LayoutBuilder(builder: (context, constraints) {
-    var footerItem;
-    return ResponsiveWrapper(
-      maxWidth: width,
-      minWidth: width,
-      defaultScale: false,
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 50.0,
-            ),
-            child: Wrap(
-              spacing: 20.0,
-              runSpacing: 20.0,
-              children: footerItems
-                  .map(
-                    (FooterItem) => Container(
-                      height: 120.0,
-                      width: ScreenHelper.isMobile(context)
-                          ? constraints.maxWidth / 2.0 - 20.0
-                          : constraints.maxWidth / 4.0 - 20.0,
-                      child: Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  footerItem.iconPath,
-                                  width: 25.0,
-                                ),
-                                SizedBox(
-                                  width: 15.0,
-                                ),
-                                Text(
-                                  footerItem.title,
-                                  style: GoogleFonts.oswald(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            RichText(
-                              textAlign: TextAlign.start,
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: "${footerItem.text1}\n",
-                                    style: TextStyle(
-                                      color: kCaptionColor,
-                                      height: 1.8,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: "${footerItem.text2}\n",
-                                    style: TextStyle(
-                                      color: kCaptionColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Flex(
-            direction: ScreenHelper.isMobile(context)
-                ? Axis.vertical
-                : Axis.horizontal,
-            mainAxisAlignment: ScreenHelper.isMobile(context)
-                ? MainAxisAlignment.center
-                : MainAxisAlignment.spaceBetween,
+          Divider(thickness: 2, color: Colors.white.withValues(alpha: 0.3)),
+          SizedBox(height: 10),
+          Stack(
             children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: 8.0,
-                ),
+              Align(
+                alignment: Alignment.centerLeft,
                 child: Text(
-                  "Copyright (c) 2021 Michele Harrington. All rights Reserved",
-                  style: TextStyle(
-                    color: kCaptionColor,
+                  "That's all folks!\n",
+                  style: GoogleFonts.jetBrainsMono(
+                    color: Color(0xFFF4EBD9),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Text(
-                        "Privacy Policy",
-                        style: TextStyle(
-                          color: kCaptionColor,
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // InkWell(
+                    //   child: Container(
+                    //     width: 32,
+                    //     height: 32,
+                    //     child: Center(
+                    //       child: Icon(
+                    //         FontAwesomeIcons.youtube,
+                    //         color: Colors.red,
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   onTap: () async {
+                    //     await launchUrlString(
+                    //       'https://www.youtube.com/@deploychef',
+                    //     );
+                    //   },
+                    // ),
+                    SizedBox(width: 5),
+                    InkWell(
+                      child: Container(
+                        width: 32,
+                        height: 32,
+                        child: Center(
+                          child: Icon(
+                            FontAwesomeIcons.telegram,
+                            color: Color(0xff0088cc),
+                          ),
                         ),
                       ),
+                      onTap: () async {
+                        await launchUrlString('https://t.me/deploychef');
+                      },
                     ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    SizedBox(width: 5),
+                    // InkWell(
+                    //   child: Container(
+                    //     width: 32,
+                    //     height: 32,
+                    //     child: Center(
+                    //       child: GradientIcon(
+                    //         FontAwesomeIcons.instagram,
+                    //         28,
+                    //         LinearGradient(
+                    //           colors: <Color>[
+                    //             Color(0xff405de6),
+                    //             Color(0xff833ab4),
+                    //             Color(0xffe1306c),
+                    //           ],
+                    //           begin: Alignment.topLeft,
+                    //           end: Alignment.bottomRight,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   onTap: () async {
+                    //     await launchUrlString(
+                    //       'https://www.instagram.com/deploychef/',
+                    //     );
+                    //   },
+                    // ),
+                    SizedBox(width: 5),
+                    // InkWell(
+                    //   child: Container(
+                    //     width: 32,
+                    //     height: 32,
+                    //     child: Center(
+                    //       child: Icon(
+                    //         FontAwesomeIcons.linkedinIn,
+                    //         color: Color(0xff0088cc),
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   onTap: () async {
+                    //     await launchUrlString(
+                    //       'https://www.linkedin.com/in/vladislav-titov-7a68a517b/',
+                    //     );
+                    //   },
+                    // ),
+                    SizedBox(width: 5),
+                    InkWell(
+                      child: Container(
+                        width: 32,
+                        height: 32,
+                        child: Center(
+                          child: Icon(
+                            FontAwesomeIcons.github,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      onTap: () async {
+                        await launchUrlString('https://github.com/DeployChef');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () async {
+                    await launchUrlString(
+                      'https://github.com/Rustemik/portfolio',
+                    );
+                  },
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
                     child: Text(
-                      "|",
-                      style: TextStyle(
-                        color: kCaptionColor,
+                      "portfolio made on flutter\n",
+                      style: GoogleFonts.jetBrainsMono(
+                        height: 1.5,
+                        color: Color(0xFFF4EBD9),
+                        fontSize: 18,
                       ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Text(
-                        "Terms & Conditions",
-                        style: TextStyle(
-                          color: kCaptionColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ],
           ),
         ],
       ),
     );
-  });
+  }
 }
