@@ -63,7 +63,7 @@ class Footer extends StatelessWidget {
                         ),
                       ),
                       onTap: () async {
-                        await launchUrlString('https://t.me/deploychef');
+                        await launchUrlString('https://t.me/hrust_116');
                       },
                     ),
                     SizedBox(width: 5),
@@ -124,7 +124,7 @@ class Footer extends StatelessWidget {
                         ),
                       ),
                       onTap: () async {
-                        await launchUrlString('https://github.com/DeployChef');
+                        await launchUrlString('https://github.com/Rustemik');
                       },
                     ),
                   ],
