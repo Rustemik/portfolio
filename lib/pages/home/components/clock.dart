@@ -569,7 +569,7 @@ class _DaVinciDigitalClockState extends State<DigitalClock> {
                     ),
                     child: Text(
                       timeText,
-                      style: GoogleFonts.orbitron(
+                      style: GoogleFonts.shareTechMono(
                         fontSize: widget.size * 0.15,
                         color: lineColor,
                         fontWeight: FontWeight.w700,

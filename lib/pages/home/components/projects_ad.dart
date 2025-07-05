@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/pages/home/components/summary_page.dart';
+import 'package:portfolio/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui' as ui;
 
@@ -126,7 +127,7 @@ class _AdaptiveImageState extends State<AdaptiveImage> {
     final codec = await ui.instantiateImageCodec(bytes);
     final frame = await codec.getNextFrame();
 
-    if (!mounted) return; // <-- Добавляем проверку mounted
+    if (!mounted) return;
 
     setState(() {
       _image = frame.image;
@@ -186,9 +187,9 @@ class _ProjectsAdState extends State<ProjectsAd> {
   final List<Project> projects = [
     Project(
       images: [
-        'assets/magic_lama_1.png',
-        'assets/magic_lama_2.png',
-        'assets/magic_lama_3.png',
+        'assets/image/magic_lama_1.png',
+        'assets/image/magic_lama_2.png',
+        'assets/image/magic_lama_3.png',
       ],
       title: 'MAGIC LAMA APP',
       description:
@@ -197,11 +198,11 @@ class _ProjectsAdState extends State<ProjectsAd> {
     ),
     Project(
       images: [
-        'assets/authorization_1.png',
-        'assets/authorization_2.png',
-        'assets/authorization_3.png',
-        'assets/authorization_4.png',
-        'assets/authorization_5.png',
+        'assets/image/authorization_1.png',
+        'assets/image/authorization_2.png',
+        'assets/image/authorization_3.png',
+        'assets/image/authorization_4.png',
+        'assets/image/authorization_5.png',
       ],
       title: 'AUTHORIZATION APP',
       description:
@@ -210,16 +211,16 @@ class _ProjectsAdState extends State<ProjectsAd> {
     ),
     Project(
       images: [
-        'assets/cinemafilter_1.png',
-        'assets/cinemafilter_2.png',
-        'assets/cinemafilter_3.png',
-        'assets/cinemafilter_4.png',
-        'assets/cinemafilter_5.png',
-        'assets/cinemafilter_6.png',
-        'assets/cinemafilter_7.png',
-        'assets/cinemafilter_8.png',
-        'assets/cinemafilter_9.png',
-        'assets/cinemafilter_10.png',
+        'assets/image/cinemafilter_1.png',
+        'assets/image/cinemafilter_2.png',
+        'assets/image/cinemafilter_3.png',
+        'assets/image/cinemafilter_4.png',
+        'assets/image/cinemafilter_5.png',
+        'assets/image/cinemafilter_6.png',
+        'assets/image/cinemafilter_7.png',
+        'assets/image/cinemafilter_8.png',
+        'assets/image/cinemafilter_9.png',
+        'assets/image/cinemafilter_10.png',
       ],
       title: 'CINEMA FILTER APP',
       description:
@@ -228,10 +229,10 @@ class _ProjectsAdState extends State<ProjectsAd> {
     ),
     Project(
       images: [
-        'assets/bubble_sort_1.png',
-        'assets/bubble_sort_2.png',
-        'assets/bubble_sort_3.png',
-        'assets/bubble_sort_4.png',
+        'assets/image/bubble_sort_1.png',
+        'assets/image/bubble_sort_2.png',
+        'assets/image/bubble_sort_3.png',
+        'assets/image/bubble_sort_4.png',
       ],
       title: 'BUBBLE SORT APP',
       description:
@@ -314,7 +315,7 @@ class _ProjectsAdState extends State<ProjectsAd> {
           height: size,
           width: size,
           decoration: BoxDecoration(
-            color: enabled ? SummaryPage.primaryColor : Colors.grey.shade400,
+            color: enabled ? SummaryPage.primaryColor : Colors.transparent,
             shape: BoxShape.circle,
             boxShadow: enabled
                 ? [
@@ -325,12 +326,14 @@ class _ProjectsAdState extends State<ProjectsAd> {
                     ),
                   ]
                 : null,
-            border: Border.all(color: Colors.white24, width: 1.5),
+            border: Border.all(color: kTitleTextDarkColor, width: 1.5),
           ),
           child: Center(
             child: IconTheme(
               data: IconThemeData(
-                color: enabled ? SummaryPage.backgroundColor : Colors.white54,
+                color: enabled
+                    ? SummaryPage.backgroundColor
+                    : kTitleTextDarkColor,
                 size: size * 0.6,
               ),
               child: icon,
@@ -370,51 +373,213 @@ class _ProjectsAdState extends State<ProjectsAd> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // Заголовок можно вынести сюда, если нужно:
-                      // _buildSectionTitle('PROJECTS'),
                       const SizedBox(height: 20),
                       LayoutBuilder(
                         builder: (context, constraints) {
                           bool isWide = constraints.maxWidth > 720;
-                          return Flex(
-                            direction: isWide ? Axis.horizontal : Axis.vertical,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              // Обертка с Padding для сдвига вправо
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: SizedBox(
-                                  width: isWide ? 250 : double.infinity,
-                                  height: isWide ? 650 : 350,
-                                  // Container(
-                                  //   width: isWide ? 250 : double.infinity,
-                                  //   height: isWide ? 650 : 350,
-                                  //   padding: const EdgeInsets.only(
-                                  //     top: 1,
-                                  //     bottom: 1,
-                                  //     left: 5,
-                                  //     right: 5,
-                                  //   ),
-                                  //   decoration: BoxDecoration(
-                                  //     border: Border.all(
-                                  //       color: kSecondaryColor,
-                                  //       width: 4,
-                                  //     ),
-                                  //     borderRadius: BorderRadius.circular(20),
-                                  //   ),
+
+                          if (isWide) {
+                            // Широкий экран — горизонтальная верстка
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                // Картинка с кнопками переключения фото
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 50),
+                                  child: SizedBox(
+                                    width: 271,
+                                    height: 400,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        _styledButton(
+                                          icon: const Icon(Icons.arrow_back),
+                                          onPressed: _currentPage > 0
+                                              ? _goToPreviousImage
+                                              : null,
+                                          tooltip: 'Previous Photo',
+                                          size: 32,
+                                        ),
+                                        const SizedBox(width: 12),
+                                        Expanded(
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
+                                            child: PageView.builder(
+                                              controller: _pageController,
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount:
+                                                  currentProject.images.length,
+                                              onPageChanged: (index) {
+                                                setState(() {
+                                                  _currentPage = index;
+                                                });
+                                              },
+                                              itemBuilder: (context, index) {
+                                                return Container(
+                                                  color: Colors.black,
+                                                  alignment: Alignment.center,
+                                                  child: AdaptiveImage(
+                                                    assetPath: currentProject
+                                                        .images[index],
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 12),
+                                        _styledButton(
+                                          icon: const Icon(Icons.arrow_forward),
+                                          onPressed:
+                                              _currentPage <
+                                                  currentProject.images.length -
+                                                      1
+                                              ? _goToNextImage
+                                              : null,
+                                          tooltip: 'Next Photo',
+                                          size: 32,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+                                const SizedBox(width: 40),
+
+                                // Текст и кнопки переключения проектов
+                                Expanded(
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        currentProject.title,
+                                        style: GoogleFonts.shareTechMono(
+                                          color: primaryColor,
+                                          fontWeight: FontWeight.w900,
+                                          height: 1.3,
+                                          fontSize: 35,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        currentProject.description,
+                                        style: TextStyle(
+                                          color: textColor,
+                                          fontSize: 16,
+                                          height: 1.5,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 30),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: primaryColor,
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 24,
+                                                    vertical: 16,
+                                                  ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                            ),
+                                            onPressed: _launchGitHub,
+                                            child: Text(
+                                              'GIT HUB',
+                                              style: GoogleFonts.shareTechMono(
+                                                color: bgColor,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 17,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 12),
+                                          _styledButton(
+                                            icon: const Icon(Icons.arrow_back),
+                                            onPressed: _currentProjectIndex > 0
+                                                ? _goToPreviousProject
+                                                : null,
+                                            tooltip: 'Previous Project',
+                                            size: 40,
+                                          ),
+                                          const SizedBox(width: 12),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              side: BorderSide(
+                                                color: primaryColor,
+                                              ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 24,
+                                                    vertical: 16,
+                                                  ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                            ),
+                                            onPressed:
+                                                _currentProjectIndex <
+                                                    projects.length - 1
+                                                ? _goToNextProject
+                                                : null,
+                                            child: Text(
+                                              'NEXT APP',
+                                              style: GoogleFonts.shareTechMono(
+                                                color:
+                                                    _currentProjectIndex <
+                                                        projects.length - 1
+                                                    ? primaryColor
+                                                    : Colors.grey.shade500,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 17,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
+                          } else {
+                            // Узкий экран — вертикальная верстка
+                            // Вместо текущей верстки для узких экранов
+                            return Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 271,
+                                  height: 400,
+                                  child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       _styledButton(
-                                        icon: const Icon(Icons.arrow_upward),
+                                        icon: const Icon(Icons.arrow_back),
                                         onPressed: _currentPage > 0
                                             ? _goToPreviousImage
                                             : null,
                                         tooltip: 'Previous Photo',
                                         size: 32,
                                       ),
-                                      const SizedBox(height: 8),
+                                      const SizedBox(width: 12),
                                       Expanded(
                                         child: ClipRRect(
                                           borderRadius: BorderRadius.circular(
@@ -422,7 +587,7 @@ class _ProjectsAdState extends State<ProjectsAd> {
                                           ),
                                           child: PageView.builder(
                                             controller: _pageController,
-                                            scrollDirection: Axis.vertical,
+                                            scrollDirection: Axis.horizontal,
                                             itemCount:
                                                 currentProject.images.length,
                                             onPageChanged: (index) {
@@ -443,9 +608,9 @@ class _ProjectsAdState extends State<ProjectsAd> {
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(height: 8),
+                                      const SizedBox(width: 12),
                                       _styledButton(
-                                        icon: const Icon(Icons.arrow_downward),
+                                        icon: const Icon(Icons.arrow_forward),
                                         onPressed:
                                             _currentPage <
                                                 currentProject.images.length - 1
@@ -457,110 +622,106 @@ class _ProjectsAdState extends State<ProjectsAd> {
                                     ],
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: isWide ? 40 : 0,
-                                height: isWide ? 0 : 20,
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
+
+                                const SizedBox(height: 24),
+
+                                Text(
+                                  currentProject.title,
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.shareTechMono(
+                                    color: primaryColor,
+                                    fontWeight: FontWeight.w900,
+                                    height: 1.3,
+                                    fontSize: 28,
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
+
+                                Text(
+                                  currentProject.description,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: textColor,
+                                    fontSize: 16,
+                                    height: 1.5,
+                                  ),
+                                ),
+
+                                const SizedBox(height: 24),
+
+                                Wrap(
+                                  alignment: WrapAlignment.center,
+                                  spacing: 12,
+                                  runSpacing: 12,
                                   children: [
-                                    Text(
-                                      currentProject.title,
-                                      style: GoogleFonts.orbitron(
-                                        color: primaryColor,
-                                        fontWeight: FontWeight.w900,
-                                        height: 1.3,
-                                        fontSize: 35,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Text(
-                                      currentProject.description,
-                                      style: TextStyle(
-                                        color: textColor,
-                                        fontSize: 16,
-                                        height: 1.5,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 30),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: primaryColor,
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 24,
-                                              vertical: 16,
-                                            ),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                          ),
-                                          onPressed: _launchGitHub,
-                                          child: Text(
-                                            'GIT HUB',
-                                            style: GoogleFonts.orbitron(
-                                              color: bgColor,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14,
-                                            ),
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: primaryColor,
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 24,
+                                          vertical: 16,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
                                           ),
                                         ),
-                                        const SizedBox(width: 12),
-                                        _styledButton(
-                                          icon: const Icon(Icons.arrow_back),
-                                          onPressed: _currentProjectIndex > 0
-                                              ? _goToPreviousProject
-                                              : null,
-                                          tooltip: 'Previous Project',
-                                          size: 40,
+                                      ),
+                                      onPressed: _launchGitHub,
+                                      child: Text(
+                                        'GIT HUB',
+                                        style: GoogleFonts.shareTechMono(
+                                          color: bgColor,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17,
                                         ),
-                                        const SizedBox(width: 12),
-                                        ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.transparent,
-                                            side: BorderSide(
-                                              color: primaryColor,
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 24,
-                                              vertical: 16,
-                                            ),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
+                                      ),
+                                    ),
+                                    _styledButton(
+                                      icon: const Icon(Icons.arrow_back),
+                                      onPressed: _currentProjectIndex > 0
+                                          ? _goToPreviousProject
+                                          : null,
+                                      tooltip: 'Previous Project',
+                                      size: 40,
+                                    ),
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.transparent,
+                                        side: BorderSide(color: primaryColor),
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 24,
+                                          vertical: 16,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
                                           ),
-                                          onPressed:
+                                        ),
+                                      ),
+                                      onPressed:
+                                          _currentProjectIndex <
+                                              projects.length - 1
+                                          ? _goToNextProject
+                                          : null,
+                                      child: Text(
+                                        'NEXT APP',
+                                        style: GoogleFonts.shareTechMono(
+                                          color:
                                               _currentProjectIndex <
                                                   projects.length - 1
-                                              ? _goToNextProject
-                                              : null,
-                                          child: Text(
-                                            'NEXT APP',
-                                            style: GoogleFonts.orbitron(
-                                              color:
-                                                  _currentProjectIndex <
-                                                      projects.length - 1
-                                                  ? primaryColor
-                                                  : Colors.grey.shade500,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14,
-                                            ),
-                                          ),
+                                              ? primaryColor
+                                              : Colors.grey.shade500,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17,
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
-                          );
+                              ],
+                            );
+                          }
                         },
                       ),
                     ],

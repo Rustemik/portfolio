@@ -7,30 +7,30 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 List<CarouselItemModel> getCarouselItems(ThemeData theme) => [
   CarouselItemModel(
-    text: Container(
+    text: SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Stack(
             children: [
               // Обводка
-              Text(
-                "Flutter Developer",
-                style: GoogleFonts.orbitron(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w900,
-                  foreground: Paint()
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 1
-                    ..color = kTitleTextDarkColor, // цвет обводки
-                ),
-              ),
+              // Text(
+              //   "Flutter Developer",
+              //   style: GoogleFonts.shareTechMono(
+              //     fontSize: 25,
+              //     fontWeight: FontWeight.w900,
+              //     foreground: Paint()
+              //       ..style = PaintingStyle.stroke
+              //       ..strokeWidth = 1
+              //       ..color = kTitleTextDarkColor, // цвет обводки
+              //   ),
+              //),
               // Заливка
               Text(
-                "Flutter Developer",
-                style: GoogleFonts.orbitron(
+                " Flutter Developer",
+                style: GoogleFonts.shareTechMono(
                   fontSize: 25,
                   fontWeight: FontWeight.w900,
                   color: theme.primaryColor, // цвет заливки букв
@@ -38,12 +38,12 @@ List<CarouselItemModel> getCarouselItems(ThemeData theme) => [
               ),
             ],
           ),
-          SizedBox(height: 50),
+          SizedBox(height: 30),
           Text(
             "Hi, my name is\nRustem", //RUSTEM\nSHAYAKBIROV
-            style: GoogleFonts.orbitron(
+            style: GoogleFonts.shareTechMono(
               color: kTitleTextDarkColor,
-              fontSize: 50,
+              fontSize: 60,
               fontWeight: FontWeight.w900,
               height: 1,
             ),
@@ -76,7 +76,7 @@ List<CarouselItemModel> getCarouselItems(ThemeData theme) => [
                       "Lets talk.",
                       style: GoogleFonts.jetBrainsMono(
                         height: 1.5,
-                        color: Colors.white,
+                        color: theme.primaryColor,
                         fontSize: 18,
                       ),
                     ),
@@ -110,7 +110,7 @@ List<CarouselItemModel> getCarouselItems(ThemeData theme) => [
         ],
       ),
     ),
-    image: Container(
+    image: SizedBox(
       child:
           ClockSwitcher(), //Image.asset("assets/person.png", fit: BoxFit.contain),
     ),

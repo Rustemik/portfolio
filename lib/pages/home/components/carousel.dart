@@ -7,7 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 class Carousel extends StatelessWidget {
   final CarouselController carouselController;
 
-  Carousel({Key? key})
+  Carousel({Key? key, required bool showClock})
     : carouselController = CarouselController(),
       super(key: key);
 

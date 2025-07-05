@@ -26,8 +26,6 @@ List<HeaderItem> headerItems = [
   HeaderItem(title: "SUMMARY", onTap: () {}),
   HeaderItem(title: "PROJECTS", onTap: () {}),
   HeaderItem(title: "CONTACTS", onTap: () {}),
-  // HeaderItem(title: "SERVICES", onTap: () {}),
-  // HeaderItem(title: "PORTFOLIO", onTap: () {}),
   HeaderItem(
     title: "HIRE ME",
     isButton: true,
@@ -76,9 +74,9 @@ class HeaderRow extends StatelessWidget {
                             onPressed: item.onTap,
                             child: Text(
                               item.title,
-                              style: GoogleFonts.orbitron(
+                              style: GoogleFonts.shareTechMono(
                                 color: kTitleTextDarkColor,
-                                fontSize: 16,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -94,9 +92,9 @@ class HeaderRow extends StatelessWidget {
                           onTap: item.onTap,
                           child: Text(
                             item.title,
-                            style: GoogleFonts.orbitron(
+                            style: GoogleFonts.shareTechMono(
                               color: kTitleTextDarkColor,
-                              fontSize: 13,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -126,7 +124,7 @@ class HeaderLogo extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: "hRust",
-                      style: GoogleFonts.orbitron(
+                      style: GoogleFonts.shareTechMono(
                         color: kTitleTextDarkColor,
                         fontSize: 28.0,
                         fontWeight: FontWeight.bold,
@@ -134,7 +132,7 @@ class HeaderLogo extends StatelessWidget {
                     ),
                     TextSpan(
                       text: ".",
-                      style: GoogleFonts.orbitron(
+                      style: GoogleFonts.shareTechMono(
                         color: kPrimaryColor,
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
@@ -206,7 +204,7 @@ class _DarkLightSwitchState extends State<DarkLightSwitch>
               borderRadius: BorderRadius.circular(20),
             ),
             child: Lottie.asset(
-              "assets/dark-light.json",
+              "assets/json/dark-light.json",
               repeat: false,
               height: 25,
               frameRate: FrameRate(100),
@@ -258,7 +256,11 @@ class Header extends StatelessWidget {
               onTap: () {
                 Globals.scaffoldKey.currentState?.openEndDrawer();
               },
-              child: Icon(Icons.menu_rounded, color: Colors.white, size: 28),
+              child: Icon(
+                Icons.menu_rounded,
+                color: kTitleTextDarkColor,
+                size: 35,
+              ),
             ),
           ],
         ),

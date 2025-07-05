@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
             ],
             background: Container(color: kBackgroundColor),
           ),
+
           home: Home(),
         ),
       ),
